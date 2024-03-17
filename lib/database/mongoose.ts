@@ -1,7 +1,7 @@
 import mongoose,{Mongoose} from "mongoose";
 
 const MONGODB_URL = process.env.MONGODB_URL;
-
+console.log('MONGODB_URL',MONGODB_URL)
 interface MongooseConnection {
     conn: Mongoose |null;
     promise: Promise<Mongoose> | null;
@@ -18,7 +18,7 @@ export const connectToDatabase = async () =>{
 
     if(!MONGODB_URL) throw new Error('Missing MONGODB_URL');
 
-    cached.promise =cached.promise || mongoose.connect(MONGODB_URL,{dbName:'foodapp',bufferCommands:false})
+    cached.promise =cached.promise || mongoose.connect(MONGODB_URL,{dbName:'imaginify',bufferCommands:false})
 
     cached.conn = await cached.promise;
 
